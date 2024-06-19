@@ -6,6 +6,7 @@ plugins {
 
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -60,6 +61,6 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
 
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.android.compiler)
+    implementation(libs.hilt.android.v2481)
+    ksp(libs.hilt.android.compiler.v2481)
 }
