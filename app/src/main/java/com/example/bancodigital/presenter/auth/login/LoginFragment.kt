@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.bancodigital.R
 import com.example.bancodigital.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,6 +34,12 @@ class LoginFragment : Fragment() {
     }
 
     private fun initListners() {
+        binding.textRegister.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+        binding.textRecover.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_recoverFragment)
+        }
         binding.btnLogin.setOnClickListener { validateDta() }
     }
 
@@ -43,10 +50,10 @@ class LoginFragment : Fragment() {
         if (email.isNotEmpty()) {
             if (password.isNotEmpty()) {
                 Toast.makeText(requireContext(), "Login...", Toast.LENGTH_SHORT).show()
-            }else {
+            } else {
                 Toast.makeText(requireContext(), "Digite sua senha", Toast.LENGTH_SHORT).show()
             }
-        }else {
+        } else {
             Toast.makeText(requireContext(), "Digite seu e-mail", Toast.LENGTH_SHORT).show()
         }
     }
