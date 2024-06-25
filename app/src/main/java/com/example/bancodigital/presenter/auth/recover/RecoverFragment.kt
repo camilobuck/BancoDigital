@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.bancodigital.R
 import com.example.bancodigital.databinding.FragmentRecoverBinding
 import com.example.bancodigital.util.initToolbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,10 +30,10 @@ class RecoverFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(binding.toolbar)
 
-        initListners()
+        initListeners()
     }
 
-    private fun initListners() {
+    private fun initListeners() {
         binding.btnSend.setOnClickListener { validateDta() }
     }
 

@@ -30,10 +30,10 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(binding.toolbar)
 
-        initListners()
+        initListeners()
     }
 
-    private fun initListners() {
+    private fun initListeners() {
         binding.btnRegister.setOnClickListener { validateDta() }
     }
 
