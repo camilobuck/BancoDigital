@@ -10,19 +10,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="24dp">
 
         <EditText
             android:id="@+id/edit_email"
+            style="@style/Theme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_edit"
             android:drawableStart="@drawable/ic_email"
             android:drawablePadding="8dp"
-            android:hint="Email"
-            android:padding="14dp"
-            android:textColorHint="@color/textcolor_hint"
+            android:hint="@string/text_hint_email"
+            android:inputType="textEmailAddress"
             app:drawableTint="@color/color_default"
             app:layout_constraintBottom_toTopOf="@+id/edit_password"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,15 +32,14 @@
 
         <EditText
             android:id="@+id/edit_password"
+            style="@style/Theme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16sp"
-            android:background="@drawable/bg_edit"
             android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="8dp"
-            android:hint="Senha"
-            android:padding="14dp"
-            android:textColorHint="@color/textcolor_hint"
+            android:hint="@string/text_hint_password"
+            android:inputType="textPassword"
             app:drawableTint="@color/color_default"
             app:layout_constraintBottom_toTopOf="@+id/btn_login"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,12 +50,11 @@
         <com.google.android.material.button.MaterialButton
 
             android:id="@+id/btn_login"
+            style="@style/Theme.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/bg_btn"
-            android:text="ENTRAR"
-            app:backgroundTint="@null"
+            android:text="@string/text_btn_login"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -68,7 +65,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/progressBar"
             app:layout_constraintTop_toBottomOf="@+id/btn_login">
@@ -78,17 +75,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Criar conta"
-                android:textColor="@color/color_default" />
+                android:text="@string/text_btn_register"
+                android:textColor="@color/color_default"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/text_recover"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Recuperar conta"
+                android:text="@string/text_btn_recover"
                 android:textAlignment="textEnd"
-                android:textColor="@color/color_default" />
+                android:textColor="@color/color_default"
+                android:textSize="16sp" />
 
 
         </LinearLayout>

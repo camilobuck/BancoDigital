@@ -31,7 +31,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Recuperar conta" />
+                    android:text="Recuperar conta"
+                    android:textColor="@color/color_default"/>
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -42,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
-            android:text="Digite seu e-mail que te enviaremos um link para você alterar sua senha"
+            android:text="@string/text_descryption_recover"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
-            android:text="E-mail"
+            android:text="@string/text_email_recover"
             android:textColor="@color/color_default"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,13 +66,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="6dp"
-            android:background="@drawable/bg_edit_arround"
             android:drawableStart="@drawable/ic_email"
             android:drawablePadding="8dp"
             android:drawableTint="@color/color_default"
-            android:hint="Digite seu e-mail"
-            android:padding="14dp"
-            android:textColorHint="@color/textcolor_hint"
+            android:hint="@string/text_hint_recover_email"
+            style="@style/Theme.EditText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="parent"
@@ -79,18 +78,17 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_send"
+            style="@style/Theme.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
-            android:background="@drawable/bg_btn"
-            android:text="Enviar E-mail"
-
-            app:backgroundTint="@null"
+            android:text="@string/text_btn_send_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_email" />
 
         <ProgressBar
+            android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"

@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -61,6 +63,13 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
 
+    "2.8.3"
+    implementation(libs.androidx.lifecycle.viewmodel.ktx.v283)
+    implementation(libs.androidx.lifecycle.livedata.ktx.v283)
+
     implementation(libs.hilt.android.v2481)
     ksp(libs.hilt.android.compiler.v2481)
+
+    // https://github.com/VicMikhailau/MaskedEditText
+    implementation(libs.maskededittext)
 }

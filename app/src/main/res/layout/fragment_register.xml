@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -31,7 +31,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Criar Conta" />
+                    android:text="Criar Conta"
+                    android:textColor="@color/color_default" />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -47,7 +48,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nome"
+                android:text="@string/text_name_register"
                 android:textColor="@color/color_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,22 +56,20 @@
 
             <EditText
                 android:id="@+id/edit_name"
+                style="@style/Theme.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_arround"
+                android:layout_marginTop="6dp"
                 android:drawableStart="@drawable/ic_user"
                 android:drawablePadding="8dp"
                 android:drawableTint="@color/color_default"
-                android:hint="Digite seu nome"
-                android:padding="14dp"
-                android:textColorHint="@color/textcolor_hint" />
+                android:hint="@string/text_hint_name_register" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="E-mail"
+                android:text="@string/text_email_register"
                 android:textColor="@color/color_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,45 +77,44 @@
 
             <EditText
                 android:id="@+id/edit_email"
+                style="@style/Theme.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_arround"
+                android:layout_marginTop="6dp"
                 android:drawableStart="@drawable/ic_email"
                 android:drawablePadding="8dp"
                 android:drawableTint="@color/color_default"
-                android:hint="Digite seu e-mail"
-                android:padding="14dp"
-                android:textColorHint="@color/textcolor_hint" />
+                android:hint="@string/text_hint_email_register"
+                android:inputType="textEmailAddress" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Telefone"
+                android:text="@string/text_phone_register"
                 android:textColor="@color/color_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="148dp" />
 
-            <EditText
+            <com.vicmikhailau.maskededittext.MaskedEditText
                 android:id="@+id/edit_phone"
+                style="@style/Theme.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_arround"
+                android:layout_marginTop="6dp"
                 android:drawableStart="@drawable/ic_phone"
                 android:drawablePadding="8dp"
                 android:drawableTint="@color/color_default"
-                android:hint="Digite seu telefone"
-                android:padding="14dp"
-                android:textColorHint="@color/textcolor_hint" />
+                android:hint="@string/text_hint_phone_register"
+                android:inputType="phone"
+                app:mask="(##) #####-####" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Senha"
+                android:text="@string/text_password_register"
                 android:textColor="@color/color_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,25 +122,23 @@
 
             <EditText
                 android:id="@+id/edit_password"
+                style="@style/Theme.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_arround"
+                android:layout_marginTop="6dp"
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="8dp"
                 android:drawableTint="@color/color_default"
-                android:hint="Digite sua senha"
-                android:padding="14dp"
-                android:textColorHint="@color/textcolor_hint" />
+                android:hint="@string/text_hint_password_register"
+                android:inputType="textPassword" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_register"
+                style="@style/Theme.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
-                android:text="CADASTRAR"
-                app:backgroundTint="@null"
+                android:text="@string/text_btn_register_sucess"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"

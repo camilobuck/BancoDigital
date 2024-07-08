@@ -1,14 +1,20 @@
 package com.example.bancodigital.presenter.auth.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bancodigital.R
 import com.example.bancodigital.databinding.FragmentLoginBinding
+import com.example.bancodigital.util.FirebaseHelper
+import com.example.bancodigital.util.StateView
+import com.example.bancodigital.util.showBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,6 +22,8 @@ class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,12 +57,39 @@ class LoginFragment : Fragment() {
 
         if (email.isNotEmpty()) {
             if (password.isNotEmpty()) {
-                Toast.makeText(requireContext(), "Login...", Toast.LENGTH_SHORT).show()
+                loginUser(email, password)
             } else {
-                Toast.makeText(requireContext(), "Digite sua senha", Toast.LENGTH_SHORT).show()
+                showBottomSheet(message = getString(R.string.text_password_empty))
             }
         } else {
-            Toast.makeText(requireContext(), "Digite seu e-mail", Toast.LENGTH_SHORT).show()
+            showBottomSheet(message = getString(R.string.text_email_empty))
+        }
+    }
+
+    private fun loginUser(email: String, password: String) {
+
+        loginViewModel.login(email, password).observe(viewLifecycleOwner) { stateView ->
+            when (stateView) {
+                is StateView.Loading -> {
+                    binding.progressBar.isVisible = true
+                }
+
+                is StateView.Sucess -> {
+                    binding.progressBar.isVisible = false
+                    findNavController().navigate(R.id.action_global_homeFragment)
+                }
+
+                is StateView.Error -> {
+                    binding.progressBar.isVisible = false
+                    showBottomSheet(
+                        message = getString(
+                            FirebaseHelper.validError(
+                                stateView.message ?: ""
+                            )
+                        )
+                    )
+                }
+            }
         }
     }
 

@@ -1,13 +1,22 @@
 package com.example.bancodigital.presenter.auth.register
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.bancodigital.R
+import com.example.bancodigital.data.model.User
 import com.example.bancodigital.databinding.FragmentRegisterBinding
+import com.example.bancodigital.util.FirebaseHelper
+import com.example.bancodigital.util.StateView
 import com.example.bancodigital.util.initToolbar
+import com.example.bancodigital.util.showBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,6 +25,8 @@ class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
+
+    private val registerViewModel: RegisterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,25 +51,60 @@ class RegisterFragment : Fragment() {
     private fun validateDta() {
         val name = binding.editName.text.toString().trim()
         val email = binding.editEmail.text.toString().trim()
-        val phone = binding.editPhone.text.toString().trim()
+        val phone = binding.editPhone.unMaskedText
         val password = binding.editPassword.text.toString().trim()
 
         if (name.isNotEmpty()) {
             if (email.isNotEmpty()) {
-                if (phone.isNotEmpty()) {
-                    if (password.isNotEmpty()) {
-                        Toast.makeText(requireContext(), "Registrando...", Toast.LENGTH_SHORT).show()
-                    }else {
-                        Toast.makeText(requireContext(), "Digite sua senha", Toast.LENGTH_SHORT).show()
+                if (phone?.isNotEmpty() == true) {
+                    if (phone.length == 11) {
+                        if (password.isNotEmpty()) {
+
+                            val user = User(name, email, phone, password)
+                            registerUser(user)
+
+                        } else {
+                            showBottomSheet(message = getString(R.string.text_password_empty))
+                        }
+
+                    } else {
+                        showBottomSheet(message = getString(R.string.text_phone_invalid))
                     }
-                }else {
-                    Toast.makeText(requireContext(), "Digite sua telefone", Toast.LENGTH_SHORT).show()
+                } else {
+                    showBottomSheet(message = getString(R.string.text_phone_empty))
                 }
-            }else {
-                Toast.makeText(requireContext(), "Digite seu e-mail", Toast.LENGTH_SHORT).show()
+            } else {
+                showBottomSheet(message = getString(R.string.text_email_empty))
             }
-        }else {
-            Toast.makeText(requireContext(), "Digite seu nome", Toast.LENGTH_SHORT).show()
+        } else {
+            showBottomSheet(message = getString(R.string.text_name_empty))
+        }
+    }
+
+    private fun registerUser(user: User) {
+
+        registerViewModel.register(user).observe(viewLifecycleOwner) { stateView ->
+            when (stateView) {
+                is StateView.Loading -> {
+                    binding.progressBar.isVisible = true
+                }
+
+                is StateView.Sucess -> {
+                    binding.progressBar.isVisible = false
+                    findNavController().navigate(R.id.action_global_homeFragment)
+                }
+
+                is StateView.Error -> {
+                    binding.progressBar.isVisible = false
+                    showBottomSheet(
+                        message = getString(
+                            FirebaseHelper.validError(
+                                stateView.message ?: ""
+                            )
+                        )
+                    )
+                }
+            }
         }
     }
 
