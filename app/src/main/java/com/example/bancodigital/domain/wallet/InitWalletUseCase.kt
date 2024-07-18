@@ -4,7 +4,7 @@ import com.example.bancodigital.data.model.Wallet
 import com.example.bancodigital.data.repository.wallet.WalletDataSourceImpl
 import javax.inject.Inject
 
-class InitWalletUsecase @Inject constructor(
+class InitWalletUseCase @Inject constructor(
     private val walletDataSourceImpl: WalletDataSourceImpl
 ) {
 

@@ -7,4 +7,5 @@ interface WalletDataSource {
     suspend fun initWallet(
         wallet: Wallet
     )
+    suspend fun getWallet(): Wallet
 }

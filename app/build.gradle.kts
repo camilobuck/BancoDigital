@@ -5,8 +5,9 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 
     id("com.google.gms.google-services")
-
+    id("kotlin-parcelize")
     id("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
 }
@@ -59,9 +60,12 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
+    // Firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.storage)
 
     "2.8.3"
     implementation(libs.androidx.lifecycle.viewmodel.ktx.v283)
@@ -72,4 +76,15 @@ dependencies {
 
     // https://github.com/VicMikhailau/MaskedEditText
     implementation(libs.maskededittext)
+
+    //https://github.com/cheonjaeung/shapedimageview
+    implementation(libs.shapedimageview)
+
+    //https://github.com/square/picasso
+    implementation(libs.picasso)
+
+    // https://github.com/ParkSangGwon/TedPermission
+    implementation(libs.tedpermission.normal)
+
+
 }

@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bancodigital.R
 import com.example.bancodigital.databinding.FragmentRecoverBinding
+import com.example.bancodigital.util.BaseFragment
 import com.example.bancodigital.util.FirebaseHelper
 import com.example.bancodigital.util.StateView
 import com.example.bancodigital.util.initToolbar
@@ -18,7 +19,7 @@ import com.example.bancodigital.util.showBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RecoverFragment : Fragment() {
+class RecoverFragment : BaseFragment() {
 
     private var _binding: FragmentRecoverBinding? = null
     private val binding get() = _binding!!
@@ -50,6 +51,7 @@ class RecoverFragment : Fragment() {
         val email = binding.editEmail.text.toString().trim()
 
         if (email.isNotEmpty()) {
+            hideKeyboard()
             recoverAccount(email)
 
         } else {

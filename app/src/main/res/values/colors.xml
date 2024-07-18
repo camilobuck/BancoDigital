@@ -3,8 +3,14 @@
 
     <color name="color_default">#31A6F6</color>
     <color name="textcolor_hint">#9AD5FD</color>
+    <color name="color_sucess">#24BC61</color>
+    <color name="color_error">#FA0014</color>
 
+    <color name="color_cashIn">#24BC61</color>
+    <color name="color_cashOut">#FA0014</color>
 
     <color name="black">#FF000000</color>
+    <color name="black50">#80000000</color>
+    <color name="black70">#B3000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

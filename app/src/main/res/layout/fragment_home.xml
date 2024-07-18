@@ -27,28 +27,35 @@
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="40dp"
+                app:cardElevation="2dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:cardElevation="2dp"
                 app:strokeWidth="@null">
 
                 <ImageView
-                    android:id="@+id/image_user"
+                    android:id="@+id/image_profile"
                     android:layout_width="80dp"
                     android:layout_height="80dp" />
 
 
             </com.google.android.material.card.MaterialCardView>
 
+            <ImageView
+                android:id="@+id/btn_logout"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_logout_circle_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Conta PF"
+                android:text="Meu Saldo"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
@@ -56,13 +63,12 @@
                 android:id="@+id/text_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:textColor="@color/white"
-                android:textSize="34sp"
-                android:textStyle="bold"
+                android:textSize="30sp"
+                android:textStyle="italic|bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
-                tools:text="R$ 270,00" />
+                tools:text="R$ 0,00" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -84,22 +90,53 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_balance" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_transactions"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
                 android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:strokeWidth="0dp">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_transactions"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        tools:listitem="@layout/transaction_item" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="visible" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.core.widget.NestedScrollView>
-
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
         android:layout_width="match_parent"
@@ -118,6 +155,7 @@
             android:paddingBottom="8dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_deposit"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
@@ -156,6 +194,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_recharge"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
@@ -194,6 +233,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_extract"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
@@ -232,6 +272,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_transfer"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
@@ -270,6 +311,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_profile"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"

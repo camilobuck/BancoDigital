@@ -1,12 +1,9 @@
 package com.example.bancodigital.presenter.auth.register
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -16,6 +13,7 @@ import com.example.bancodigital.data.model.Wallet
 import com.example.bancodigital.databinding.FragmentRegisterBinding
 import com.example.bancodigital.presenter.profile.ProfileViewModel
 import com.example.bancodigital.presenter.wallet.WalletViewModel
+import com.example.bancodigital.util.BaseFragment
 import com.example.bancodigital.util.FirebaseHelper
 import com.example.bancodigital.util.StateView
 import com.example.bancodigital.util.initToolbar
@@ -23,7 +21,7 @@ import com.example.bancodigital.util.showBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RegisterFragment : Fragment() {
+class RegisterFragment : BaseFragment() {
 
 
     private var _binding: FragmentRegisterBinding? = null
@@ -45,7 +43,6 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(binding.toolbar)
-
         initListeners()
     }
 
@@ -65,6 +62,7 @@ class RegisterFragment : Fragment() {
                     if (phone.length == 11) {
                         if (password.isNotEmpty()) {
 
+                            hideKeyboard()
                             registerUser(name, email, phone, password)
 
                         } else {

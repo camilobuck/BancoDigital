@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,6 +19,7 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -31,10 +34,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Criar Conta"
+                    android:text="@string/text_create_account"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:textColor="@color/color_default" />
 
             </androidx.appcompat.widget.Toolbar>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?actionBarDivider"
+                android:backgroundTint="@color/black"
+                tools:layut_editor_absoluteX="15dp"
+                tools:layut_editor_absoluteY="64dp" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -133,7 +146,7 @@
                 android:inputType="textPassword" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_register"
+                android:id="@+id/btnRegister"
                 style="@style/Theme.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,5 +176,6 @@
 
 
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
